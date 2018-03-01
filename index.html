@@ -11,35 +11,57 @@
     
 </head>
 <body>
-
+   
     <div class="container">
 
-    <h1>Hangman</h1>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+      <h1>Hangman</h1>
+      </div>
+      
+      <div class="panel-body">
+        <h4 id="message"></h4>
+      </div>
 
-    <h2 id="message"></h2>
+    </div>
 
-    <p>Guess the word:</p>
+    <div class="panel panel-default">
 
-    <p id="guess"></p>
-
-
-    <input type="text" size="2" id ="letter" onkeypress="getLetter(event)">
-
-
-    <p>Letters Guessed: </p>
-
-    <p id ="guessLetters"></p>
+    <div class="row">
     
-    <p>Attempts Left:</p>
-    <p id ="attempts"></p>
+        <div class ="col-lg-6">
+            <p>Guess the word:</p>
 
-    <p id="hangman"></p>
+            <p id="guess"></p>
 
-    <p>Wins:</p>
-    <p id ="wins"></p>
+            <p>Your Letter:</p>
+            
+            <p id="letter"></p>
+            <!--Key Pressed: <span id="text"></span>-->
 
-    <p>Loses:</p>
-    <p id = "loses"></p>
+        
+            <!--<input type="text" size="2" id ="letter" onkeypress="getLetter(event)">-->
+
+        </div>
+        <div class ="col-lg-6">
+    
+            <p>Letters Guessed: </p>
+
+            <p id ="guessLetters"></p>
+    
+            <p>Attempts Left:</p>
+            <p id ="attempts"></p>
+
+            <p id="hangman"></p>
+
+            <p>Wins:</p>
+             <p id ="wins"></p>
+
+             <p>Loses:</p>
+            <p id = "loses"></p>
+        </div>
+        </div>
+    </div>
     </div>
 </body>
 <script src="assets/javascript/game.js"></script>

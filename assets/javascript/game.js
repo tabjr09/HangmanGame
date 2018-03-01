@@ -1,7 +1,7 @@
 var wordBank = ["coding", "developer", "debug", "gitlab", "patience", "tablet", 
                 "bootcamp", "laptop", "georgia", "javascript"];
 
-var userLetter, wins =0, loses =0, lettersGuessed=[], attempts =6, guessWord, tempword =[];
+var  wins =0, loses =0, lettersGuessed=[], attempts =6, guessWord, tempword =[];
 var hangMan=["head", "torso", "leftarm", "rightarm", "leftleg", "rightleg"];
 
       // Randomly chooses a choice from the options array. This is the Computer's guess.
@@ -16,14 +16,24 @@ var guessWord = wordBank[Math.floor(Math.random() * wordBank.length)];
     
     clearWord(guessWord, tempword);
     
-    while(!checkGameOver()){
+    document.onkeyup = function(event) {
+
+    if(!checkGameOver()){
     
     //userLetter = document.getElementById("letter").value;
     /*
      getLetter
      
      //prompt("Please guess a letter of the word")
+
     */
+
+    var userLetter = event.key;
+
+    //document.getElementById("letter").innerHTML = userLetter;
+
+
+    
     validateChoice(userLetter,guessWord,tempword);
 
     //document.getElementById("letter").value = "";
@@ -33,7 +43,7 @@ var guessWord = wordBank[Math.floor(Math.random() * wordBank.length)];
 
   }
   updateScoreboard();
-
+}
     
 }
 //takes the word selected by the computer, and copies blanks into the guessword, the lenght of the computer word
@@ -90,8 +100,7 @@ function checkGameOver(){
         if(tempword[i] == "_")
           
          count++;
-      
-    }
+      }
         
        if(count > 0){
          console.log("game is not over");
@@ -119,6 +128,9 @@ function updateScoreboard (){
     document.getElementById("guess").innerHTML =  tempword.join(' ');
 
     document.getElementById("guessLetters").innerHTML = lettersGuessed;
+
+
+
 
     //console.log("guess letters updated")
 
