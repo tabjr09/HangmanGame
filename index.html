@@ -12,7 +12,7 @@
 </head>
 <body>
    
-    <div class="container">
+<div class="container">
 
     <div class="panel panel-default">
       <div class="panel-heading">
@@ -20,49 +20,84 @@
       </div>
       
       <div class="panel-body">
-        <h4 id="message"></h4>
+        <h4 id="message">Hangman! Press any key to get started.</h4>
       </div>
 
     </div>
 
-    <div class="panel panel-default">
 
     <div class="row">
     
         <div class ="col-lg-6">
-            <p>Guess the word:</p>
+
+          <div class="panel panel-default worddiv">
+
+            <p>Guess the word:</p></br>
 
             <p id="guess"></p>
-
-            <p>Your Letter:</p>
-            
-            <p id="letter"></p>
-            <!--Key Pressed: <span id="text"></span>-->
-
-        
-            <!--<input type="text" size="2" id ="letter" onkeypress="getLetter(event)">-->
-
-        </div>
-        <div class ="col-lg-6">
-    
-            <p>Letters Guessed: </p>
+   
+            <p >Letters Guessed: </p>
 
             <p id ="guessLetters"></p>
+          </div>
+
+        </div>
+
+        <div class ="col-lg-6">
+
+            <div class="panel picdiv">
+
+               <!-- <img src="assets/images/goal.jpg" alt="goal"> -->
+
+            </div>
+
+            
+        </div>
+        
+    </div>
     
-            <p>Attempts Left:</p>
-            <p id ="attempts"></p>
+ 
+    <div class="row">
+            <div class="col-lg-4">
+                <div class="panel panel-default">
+                
+                    <div class="panel-heading">
+                        <h4>Attempts Left:</h4>
+                    </div>
+                    <div class="panel-body scores">
+                     <p id ="attempts"></p>
+                    </div>
+            </div>
 
-            <p id="hangman"></p>
+            </div>
+            <div class="col-lg-4">
+                <div class="panel panel-default">
+                
+                    <div class="panel-heading">
+                        <h4>Wins:</h4>
+                    </div>
+                    <div class="panel-body scores">
+                     <p id ="wins"></p>
+                    </div>
+            </div>
 
-            <p>Wins:</p>
-             <p id ="wins"></p>
+            </div>
+            <div class="col-lg-4">
+                <div class="panel panel-default">
+                
+                    <div class="panel-heading">
+                        <h4>Losses:</h4>
+                    </div>
+                    <div class="panel-body scores">
+                     <p id ="loses"></p>
+                    </div>
+                </div>
 
-             <p>Loses:</p>
-            <p id = "loses"></p>
+            </div>
         </div>
-        </div>
+        
     </div>
-    </div>
+    
 </body>
 <script src="assets/javascript/game.js"></script>
 </html>

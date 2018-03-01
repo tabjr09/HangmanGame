@@ -5,44 +5,60 @@ var  wins =0, loses =0, lettersGuessed=[], attempts =6, guessWord, tempword =[];
 var hangMan=["head", "torso", "leftarm", "rightarm", "leftleg", "rightleg"];
 
       // Randomly chooses a choice from the options array. This is the Computer's guess.
-var guessWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+  guessWord = wordBank[Math.floor(Math.random() * wordBank.length)];
 
 
+function reset(){
+
+    lettersGuessed=[], attempts = 6, tempword=[];
+
+    guessWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+
+    clearWord(guessWord, tempword);
+
+    document.getElementById("message").innerHTML = "Guess a letter of the word.";
+
+    updateScoreboard();
+}
 
 
 
  
   document.onkeyup = function(event) {
     
+    /*
     clearWord(guessWord, tempword);
+
+    document.getElementById("message").innerHTML = "Guess a letter of the word.";
+    */
+
+    //reset();
     
     document.onkeyup = function(event) {
 
     if(!checkGameOver()){
     
-    //userLetter = document.getElementById("letter").value;
-    /*
-     getLetter
-     
-     //prompt("Please guess a letter of the word")
-
-    */
 
     var userLetter = event.key;
 
     //document.getElementById("letter").innerHTML = userLetter;
 
-
-    
     validateChoice(userLetter,guessWord,tempword);
 
     //document.getElementById("letter").value = "";
 
     updateScoreboard();
 
+    //checkGameOver();
+
 
   }
+  else /*if(checkGameOver())*/{
+
   updateScoreboard();
+  reset();
+  }
+
 }
     
 }
@@ -56,7 +72,7 @@ function clearWord(word1, word2){
      }
       //console.log(word2.join(' '));
 
-      document.getElementById("guess").innerHTML += word2.join(' ');
+      document.getElementById("guess").innerHTML = word2.join(' ');
 
 }
 
@@ -84,7 +100,10 @@ function validateChoice(x, word1, word2) {
       }
       else{
         document.getElementById("message").innerHTML = "Yes, " + x + " is in the word!";
+
+        //document.getElementsByClassName("picdiv").style.backgroundImage =  "url('...images/swoosh.jpeg')";
     
+       
       }
   }
    
@@ -103,12 +122,13 @@ function checkGameOver(){
       }
         
        if(count > 0){
-         console.log("game is not over");
+         //console.log("game is not over");
          return false;
         }
        else if(count == 0){
-         console.log("game is over");
+         //console.log("game is over");
          wins++;
+         document.getElementById("message").innerHTML = "Game Over! Press any key to continue";
          return true;
         }
 
@@ -117,7 +137,7 @@ function checkGameOver(){
     else if(attempts === 0){
 
         loses++;
-        console.log("game is over");
+        document.getElementById("message").innerHTML = "Game Over! Press any key to continue.";
         return true;
     }
 
@@ -127,10 +147,7 @@ function updateScoreboard (){
 
     document.getElementById("guess").innerHTML =  tempword.join(' ');
 
-    document.getElementById("guessLetters").innerHTML = lettersGuessed;
-
-
-
+    document.getElementById("guessLetters").innerHTML = lettersGuessed.join(' ');;
 
     //console.log("guess letters updated")
 
@@ -140,9 +157,8 @@ function updateScoreboard (){
 
     document.getElementById("loses").innerHTML = loses;
 
-    //console.log("losses updated");
 }
-
+/*
 function getLetter(event){
 
     var x = event.keyCode;               // Get the Unicode value
@@ -150,3 +166,4 @@ function getLetter(event){
     userLetter = String.fromCharCode(x);      // Convert the value into a character
       
 }
+*/

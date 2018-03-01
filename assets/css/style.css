@@ -1,0 +1,38 @@
+body{
+    background-color: black;
+    color: black;
+    background-image: url("../images/bbtexture.jpg");
+    background-repeat: no-repeat;
+    text-align: center;
+}
+
+.panel-body{
+
+    background-color: aliceblue;
+}
+
+.panel{
+    border: 5px solid black;
+}
+
+.worddiv, .picdiv{
+
+    height: 300px;
+
+}
+
+
+.scores{
+    font-family: 'Raleway Dots', cursive;
+    font-size: 24px;
+}
+
+.worddiv{
+
+    font-size: 35;
+}
+
+.picdiv{
+    background-image: url("../images/goal.jpg");
+    
+}
