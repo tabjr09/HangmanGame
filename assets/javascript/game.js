@@ -25,14 +25,9 @@ function reset(){
 
  
   document.onkeyup = function(event) {
-    
-    /*
-    clearWord(guessWord, tempword);
 
-    document.getElementById("message").innerHTML = "Guess a letter of the word.";
-    */
 
-    //reset();
+    reset();
     
     document.onkeyup = function(event) {
 
@@ -54,6 +49,8 @@ function reset(){
 
   }
   else /*if(checkGameOver())*/{
+
+        document.getElementById("message").innerHTML = "GAME OVER!";
 
   updateScoreboard();
   reset();
@@ -79,7 +76,9 @@ function clearWord(word1, word2){
 //validate user's letter
 function validateChoice(x, word1, word2) {
 
+    //a is a counter for the number of letter occurrences in the word
     var a = 0;
+    var b = 0;
     //validate the input is a character
     if (x.search(/^[a-zA-Z]+$/) === -1){
         document.getElementById("message").innerHTML = "Only characters please.";
@@ -92,13 +91,17 @@ function validateChoice(x, word1, word2) {
               word2[i] = x;
               a++;
           }
+          if(lettersGuessed[i]==x){ //update counter if letter has already been guessed
+              b++
+          }
       }
-      if(a == 0){
+      if(a == 0){ //if the number of occurrences in the word is 0
+
         document.getElementById("message").innerHTML = "Sorry, there is no " + x + " in the word.";
         attempts--;
         lettersGuessed.push(x);
       }
-      else{
+      else if(a > 0 && b == 0) {
         document.getElementById("message").innerHTML = "Yes, " + x + " is in the word!";
 
         //document.getElementsByClassName("picdiv").style.backgroundImage =  "url('...images/swoosh.jpeg')";
@@ -149,8 +152,6 @@ function updateScoreboard (){
 
     document.getElementById("guessLetters").innerHTML = lettersGuessed.join(' ');;
 
-    //console.log("guess letters updated")
-
     document.getElementById("attempts").innerHTML = attempts;
 
     document.getElementById("wins").innerHTML = wins;
@@ -158,12 +159,3 @@ function updateScoreboard (){
     document.getElementById("loses").innerHTML = loses;
 
 }
-/*
-function getLetter(event){
-
-    var x = event.keyCode;               // Get the Unicode value
-    
-    userLetter = String.fromCharCode(x);      // Convert the value into a character
-      
-}
-*/

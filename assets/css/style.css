@@ -1,7 +1,7 @@
 body{
     background-color: black;
     color: black;
-    background-image: url("../images/bbtexture.jpg");
+    //background-image: url("../images/bbtexture.jpg");
     background-repeat: no-repeat;
     text-align: center;
 }
@@ -9,6 +9,14 @@ body{
 .panel-body{
 
     background-color: aliceblue;
+}
+
+.container{
+    background-image: url("../images/bbtexture.jpg");
+}
+
+panel-heading{
+    background-color: blue;
 }
 
 .panel{
@@ -22,6 +30,7 @@ body{
 }
 
 
+
 .scores{
     font-family: 'Raleway Dots', cursive;
     font-size: 24px;
@@ -29,7 +38,7 @@ body{
 
 .worddiv{
 
-    font-size: 35;
+    font-size: 35px;
 }
 
 .picdiv{
