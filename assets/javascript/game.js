@@ -1,29 +1,30 @@
-var wordBank = ["coding", "developer", "debug", "gitlab", "patience", "tablet", 
+//------------Variables---------------------------------------------------------------//
+
+var wordBank = ["coding", "developer", "debug", "gitlab", "patience", "tablet",
                 "bootcamp", "laptop", "georgia", "javascript"];
 
 var  wins =0, loses =0, lettersGuessed=[], attempts =6, guessWord, tempword =[];
 var hangMan=["head", "torso", "leftarm", "rightarm", "leftleg", "rightleg"];
 
-      // Randomly chooses a choice from the options array. This is the Computer's guess.
+
+var hitsound = document.getElementById("Audio1");
+
+var misssound = document.getElementById("Audio2");
+
+var pic = document.getElementsByClassName("picdiv");
+
+//"url('img_tree.png')";
+
+
+//----------------------------------Main----------------------------------------------------//
+
+
+// Randomly chooses a choice from the options array. This is the Computer's guess.
   guessWord = wordBank[Math.floor(Math.random() * wordBank.length)];
 
 
-function reset(){
-
-    lettersGuessed=[], attempts = 6, tempword=[];
-
-    guessWord = wordBank[Math.floor(Math.random() * wordBank.length)];
-
-    clearWord(guessWord, tempword);
-
-    document.getElementById("message").innerHTML = "Guess a letter of the word.";
-
-    updateScoreboard();
-}
 
 
-
- 
   document.onkeyup = function(event) {
 
 
@@ -31,35 +32,28 @@ function reset(){
     
     document.onkeyup = function(event) {
 
-    if(!checkGameOver()){
-    
+      if(!checkGameOver()){
 
-    var userLetter = event.key;
+      var userLetter = event.key;
 
-    //document.getElementById("letter").innerHTML = userLetter;
+      validateChoice(userLetter,guessWord,tempword);
 
-    validateChoice(userLetter,guessWord,tempword);
+      updateScoreboard();
 
-    //document.getElementById("letter").value = "";
+        checkGameOver();
+      }
+    else /*if(checkGameOver())*/{
 
-    updateScoreboard();
+      document.getElementById("message").innerHTML = "GAME OVER!";
 
-    //checkGameOver();
-
-
-  }
-  else /*if(checkGameOver())*/{
-
-        document.getElementById("message").innerHTML = "GAME OVER!";
-
-  updateScoreboard();
-  reset();
+      updateScoreboard();
+      reset();
   }
 
 }
     
 }
-//takes the word selected by the computer, and copies blanks into the guessword, the lenght of the computer word
+//takes the word selected by the computer, and copies blanks into the guessword, the length of the computer word
 function clearWord(word1, word2){
 
     for(var i = 0; i<word1.length; i++){
@@ -67,7 +61,6 @@ function clearWord(word1, word2){
         word2[i] = "_"      
 
      }
-      //console.log(word2.join(' '));
 
       document.getElementById("guess").innerHTML = word2.join(' ');
 
@@ -96,15 +89,21 @@ function validateChoice(x, word1, word2) {
           }
       }
       if(a == 0){ //if the number of occurrences in the word is 0
-
+        misssound.play();
         document.getElementById("message").innerHTML = "Sorry, there is no " + x + " in the word.";
         attempts--;
         lettersGuessed.push(x);
       }
       else if(a > 0 && b == 0) {
-        document.getElementById("message").innerHTML = "Yes, " + x + " is in the word!";
+          hitsound.play();
+          document.getElementById("message").innerHTML = "Yes, " + x + " is in the word!";
 
-        //document.getElementsByClassName("picdiv").style.backgroundImage =  "url('...images/swoosh.jpeg')";
+          pic.backgroundImage = "url('assets/images/swoosh.jpeg')";
+
+          
+
+
+        //document.getElementsByClassName("picdiv").style.backgroundImage =  "url('..images/swoosh.jpeg')";
     
        
       }
@@ -158,4 +157,18 @@ function updateScoreboard (){
 
     document.getElementById("loses").innerHTML = loses;
 
+}
+
+
+function reset(){
+
+    lettersGuessed=[], attempts = 6, tempword=[];
+
+    guessWord = wordBank[Math.floor(Math.random() * wordBank.length)];
+
+    clearWord(guessWord, tempword);
+
+    document.getElementById("message").innerHTML = "Guess a letter of the word.";
+
+    updateScoreboard();
 }

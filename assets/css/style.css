@@ -15,9 +15,6 @@ body{
     background-image: url("../images/bbtexture.jpg");
 }
 
-panel-heading{
-    background-color: blue;
-}
 
 .panel{
     border: 5px solid black;
@@ -44,4 +41,9 @@ panel-heading{
 .picdiv{
     background-image: url("../images/goal.jpg");
     
+}
+
+
+.panel-heading{
+    background-color: grey;
 }
